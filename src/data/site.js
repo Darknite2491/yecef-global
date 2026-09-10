@@ -88,6 +88,25 @@ export const event = {
     'Fresh Fire 2026 flyer — Saturday 12 September, 9am, Trinity House, Zion Centre, Oniru, Victoria Island, Lagos. Ministering: Afolabi Oke, Racheal Oseni, Alabba, Reverend David S. Johnson, Pst. Mike Albert, Ayodeji Moboluwaji, Pst. Bright Micah. Convener: Morenike Alayerogun.',
 }
 
+// ── The on-site registration desk at /desk ────────────────────
+// Volunteers open this on their own phones and register people who
+// arrive without having signed up, or who can't do it themselves.
+//
+// It works with NO network — every entry is saved to that phone
+// immediately and can be exported as CSV. `endpoint` is optional: set
+// it and entries also POST to your Google Sheet in the background.
+//
+// TO WIRE UP THE SHEET (5 minutes):
+//  1. Open the "FRESH FIRE 2026 — All Responses" spreadsheet
+//  2. Extensions → Apps Script, paste the code from desk-apps-script.js
+//  3. Deploy → New deployment → Web app
+//       Execute as: Me    ·    Who has access: Anyone
+//  4. Copy the /exec URL it gives you and paste it below.
+export const desk = {
+  endpoint: null,   // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
+  pin: '2026',      // desk code volunteers type to open the page. Change it.
+}
+
 // True once Fresh Fire has finished. The homepage uses this to lead with
 // the foundation instead of the countdown — no edit needed on the day.
 export const eventIsPast = () => Date.now() > new Date(event.endsAt).getTime()

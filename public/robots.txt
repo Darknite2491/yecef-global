@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Staff-facing registration desk — not for search results.
+Disallow: /desk
+
+Sitemap: https://yecef.netlify.app/sitemap.xml

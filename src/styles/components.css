@@ -583,6 +583,15 @@
   grid-template-columns: minmax(0, 1.4fr) repeat(auto-fit, minmax(9rem, 1fr));
   gap: var(--s4);
 }
+/* auto-fit squeezed the brand column to a few characters wide on phones,
+   wrapping the tagline one word per line beside the logo. */
+@media (max-width: 720px) {
+  .foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .foot__grid > :first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 420px) {
+  .foot__grid { grid-template-columns: 1fr; gap: var(--s3); }
+}
 .foot h4 {
   font-family: var(--f-mono);
   font-size: 0.65rem;
@@ -717,6 +726,90 @@
 :root[data-theme='light'] .logo--dark  { display: none; }
 
 .logo-block { display: flex; flex-direction: column; gap: var(--s2); }
+
+/* ─────────────── Registration desk (/desk) ───────────────
+   Tuned for a volunteer holding a phone with a queue in front of
+   them: 16px+ inputs so iOS doesn't zoom on focus, 48px targets,
+   and the save button always within thumb reach. */
+.desk { display: flex; flex-direction: column; gap: var(--s3); }
+
+.desk__bar {
+  display: flex; flex-wrap: wrap; gap: var(--s2);
+  align-items: center; justify-content: space-between;
+  padding: var(--s2) var(--s3);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  position: sticky; top: var(--nav-h); z-index: 20;
+}
+.desk__count { display: flex; align-items: baseline; gap: .5rem; }
+.desk__count b {
+  font-family: var(--f-display); font-size: 1.7rem; font-weight: 800;
+  letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--ember);
+}
+.desk__count span { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); }
+
+.desk__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--s4); align-items: start; }
+@media (max-width: 900px) { .desk__grid { grid-template-columns: 1fr; } }
+
+.desk__form { display: flex; flex-direction: column; gap: var(--s2); }
+.desk__f { display: flex; flex-direction: column; gap: .3rem; }
+.desk__f > span {
+  font-family: var(--f-mono); font-size: .66rem; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.desk__f > span b { color: var(--ember); }
+.desk__f input,
+.desk__f select {
+  width: 100%; min-height: 50px; padding: .7rem .85rem;
+  background: var(--ground); border: 1px solid var(--line); border-radius: var(--r);
+  color: var(--text); font-family: var(--f-body);
+  font-size: 16px;            /* below 16px iOS zooms the page on focus */
+}
+.desk__f select { font-family: var(--f-ui, var(--f-display)); }
+.desk__f input:focus-visible,
+.desk__f select:focus-visible { border-color: var(--amber); }
+.desk__warn { font-size: .78rem; color: var(--amber); font-style: normal; }
+
+.desk__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2); }
+@media (max-width: 520px) { .desk__row { grid-template-columns: 1fr 1fr; } }
+
+.desk__seg { display: flex; gap: .35rem; }
+.desk__seg button {
+  flex: 1; min-height: 50px; background: var(--ground);
+  border: 1px solid var(--line); border-radius: var(--r);
+  color: var(--text-mid); font-family: var(--f-display); font-weight: 700; font-size: .95rem;
+  transition: border-color .12s var(--ease), background .12s var(--ease), color .12s var(--ease);
+}
+.desk__seg button[aria-pressed='true'] {
+  border-color: var(--ember); color: var(--text);
+  background: color-mix(in oklab, var(--ember) 18%, var(--ground));
+}
+
+.desk__save { min-height: 58px; font-size: 1.02rem; margin-top: var(--s1); }
+
+.desk__side { display: flex; flex-direction: column; gap: var(--s3); }
+.desk__recent { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line-soft); }
+.desk__recent li {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+  padding: .6rem 0; border-bottom: 1px solid var(--line-soft); font-size: .9rem;
+}
+.desk__recent b { font-family: var(--f-display); font-weight: 700; margin-right: .5rem; }
+.desk__recent .mono { font-size: .82rem; color: var(--text-mid); }
+.desk__recent button {
+  background: none; border: 0; color: var(--text-dim);
+  font-family: var(--f-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: .4rem; min-height: 40px;
+}
+.desk__recent button:hover { color: var(--ember); }
+
+.desk__toast {
+  position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%);
+  background: var(--ember-fill); color: var(--on-ember);
+  font-family: var(--f-display); font-weight: 700; font-size: .95rem;
+  padding: .8rem 1.3rem; border-radius: var(--r-pill); z-index: 200;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .7);
+}
+
+.btn:disabled { opacity: .45; pointer-events: none; }
 
 /* ─────────────── Misc ─────────────── */
 .tscroll { overflow-x: auto; }

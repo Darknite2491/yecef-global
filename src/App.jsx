@@ -11,6 +11,7 @@ import About from './pages/About.jsx'
 import Editions from './pages/Editions.jsx'
 import Give from './pages/Give.jsx'
 import Serve from './pages/Serve.jsx'
+import Desk from './pages/Desk.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
@@ -33,6 +34,8 @@ export default function App() {
           <Route path="/editions" element={<Editions />} />
           <Route path="/give" element={<Give />} />
           <Route path="/serve" element={<Serve />} />
+          {/* Staff-facing, deliberately not in the nav */}
+          <Route path="/desk" element={<Desk />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
