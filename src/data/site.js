@@ -246,6 +246,26 @@ export const programmes = [
     link: null,
   },
   {
+    id: 'mentoring',
+    name: 'Mentoring sessions',
+    short: 'Mentoring',
+    stat: 'Every quarter, from 2026',
+    body:
+      'Four times a year, young people sit with people a few steps ahead of them — on work, faith, money and the decisions that are hard to make alone. Small rooms, real questions, no stage.',
+    link: null,
+    // TODO: first date, venue and how to sign up. Add a link here once
+    // there's a page or form for it and the button appears automatically.
+  },
+  {
+    id: 'skills',
+    name: 'Skills acquisition',
+    short: 'Skills',
+    stat: null, // TODO: which trades, how many trained so far
+    body:
+      'Hands-on training in a trade a young person can earn from. The conference lasts a day; a skill lasts. Runs alongside the mentoring track.',
+    link: null,
+  },
+  {
     id: 'widows',
     name: 'Widow support',
     short: 'Widows',

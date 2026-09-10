@@ -28,9 +28,10 @@ export default function About() {
             <p className="mid">
               {org.short} is a youth foundation based in Lagos, convened by{' '}
               {org.convener}. It runs one gathering a year — {event.series}, on the
-              second Saturday of September, free to attend. It also buys JAMB forms
-              for students who can’t afford to sit the exam, and provides for widows
-              in the communities it works in.
+              second Saturday of September, free to attend. Around it sit the things
+              that run all year: quarterly mentoring, hands-on skills training, JAMB
+              forms bought outright for students who can’t afford to sit the exam,
+              and provision for widows in the communities it works in.
             </p>
             <p className="mid">
               What makes it work isn’t the venue. It’s the network: {axes.length} pickup axes
@@ -46,10 +47,10 @@ export default function About() {
         <div className="shell">
           <div className="sec-head">
             <p className="eyebrow">What we do</p>
-            <h2>Three programmes</h2>
+            <h2>{programmes.length} programmes</h2>
             <p className="mid">
-              The September conference is the one people know about. The other two
-              run quietly and cost real money.
+              The September conference is the one people know about. The other{' '}
+              {programmes.length - 1} run quietly and cost real money.
             </p>
           </div>
           <div className="progs">

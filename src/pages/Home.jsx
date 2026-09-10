@@ -23,9 +23,9 @@ function Hero({ past }) {
             <p className="eyebrow">{org.short}</p>
             <h1>We bring the bus to your <em>junction</em>.</h1>
             <p className="lede">
-              A youth foundation in Lagos that runs one free conference a year,
-              buys JAMB forms for students who can’t, and provides for widows in
-              the communities it works in.
+              A youth foundation in Lagos. One free conference a year, quarterly
+              mentoring, skills training, JAMB forms for students who can’t afford
+              them, and provision for widows in the communities it works in.
             </p>
             <div className="hero__ctas">
               <Link className="btn btn--ember" to="/give">Partner with us</Link>
@@ -109,9 +109,12 @@ function Programmes({ past }) {
       <div className="shell">
         <div className="sec-head">
           <p className="eyebrow">What we do</p>
-          <h2>Three things, all year</h2>
+          {/* Counts come from the data, so adding a programme never leaves a
+              stale number in the heading. */}
+          <h2>{programmes.length} things, all year</h2>
           <p className="mid">
-            The conference is the loudest thing YECEF does. It isn’t the only thing.
+            The conference is the loudest thing YECEF does. It is one of{' '}
+            {programmes.length} — the rest run quietly, all year, and cost real money.
           </p>
         </div>
 
