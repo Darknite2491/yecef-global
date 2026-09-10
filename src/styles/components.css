@@ -1,0 +1,704 @@
+/* ═══════════════════════════════════════════════════════════
+   COMPONENTS
+   Rule followed throughout: border / fill / radius / shadow each
+   say "separate object". They are spent by role, not stamped on
+   every block. Hairline rules separate list content; only genuine
+   objects (the axis finder, the giving card) get a border.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─────────────── Buttons ─────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;                 /* 44px minimum tap target, with room */
+  padding: 0.7rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  font-family: var(--f-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  text-decoration: none;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease),
+              color 0.15s var(--ease), transform 0.15s var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--ember {
+  background: var(--ember-fill);
+  color: var(--on-ember);
+}
+.btn--ember:hover { background: var(--ember-hover); color: var(--on-ember); }
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--text);
+}
+.btn--ghost:hover { border-color: var(--text-dim); color: var(--text); }
+
+.btn--core {
+  background: transparent;
+  border-color: var(--core);
+  color: var(--core);
+}
+.btn--core:hover { background: var(--core); color: var(--on-ember); }
+
+.btn--sm { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.88rem; }
+
+/* ─────────────── Pills ─────────────── */
+.pill {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.24rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.pill--ember { border-color: var(--ember); color: var(--ember); }
+.pill--core  { border-color: var(--core);  color: var(--core); }
+.pill--ok    { border-color: var(--ok);    color: var(--ok); }
+
+/* ─────────────── Nav ─────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: color-mix(in oklab, var(--ground) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__in {
+  width: 100%;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-inline: var(--pad);
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  margin-right: auto;
+  line-height: 1.05;
+}
+.nav__brand .mark { height: 30px; width: auto; flex: none; }
+.nav__brand .words { display: flex; flex-direction: column; }
+.nav__brand b {
+  font-family: var(--f-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.nav__brand span {
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.nav__links { display: flex; align-items: center; gap: 0.35rem; }
+.nav__link {
+  font-family: var(--f-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--r);
+  transition: color 0.15s var(--ease), background 0.15s var(--ease);
+}
+.nav__link:hover { color: var(--text); background: var(--surface-2); }
+.nav__link[aria-current='page'] { color: var(--ember); }
+.nav__actions { display: flex; align-items: center; gap: 0.5rem; }
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  color: var(--text-mid);
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.icon-btn:hover { color: var(--text); border-color: var(--text-dim); }
+
+.nav__toggle { display: none; }
+@media (max-width: 900px) {
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--ground);
+    border-bottom: 1px solid var(--line);
+    padding: var(--s1) var(--pad) var(--s3);
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__link { padding: 0.85rem 0.2rem; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
+  .nav__toggle { display: grid; }
+}
+
+/* ─────────────── Hero ─────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(120% 92% at 6% 106%, color-mix(in oklab, var(--ember) 36%, transparent) 0%, transparent 60%),
+    radial-gradient(92% 72% at 80% 116%, color-mix(in oklab, var(--amber) 24%, transparent) 0%, transparent 56%),
+    radial-gradient(84% 62% at 46% 128%, color-mix(in oklab, var(--core) 18%, transparent) 0%, transparent 54%);
+}
+/* ── Photo hero ──
+   When a background image is set, the hero becomes its own dark world
+   in both themes: a photo needs one consistent scrim, not two. Only the
+   text tokens are pinned locally — --ember-fill stays global so the
+   buttons keep their contrast-checked fill. */
+.hero--photo {
+  --text: #F8F2EC;
+  --text-mid: #E3D6CB;
+  --text-dim: #BCAAA0;
+  --line: rgba(255, 255, 255, 0.22);
+  --line-soft: rgba(255, 255, 255, 0.14);
+  --ember: #FF6A3D;          /* lifted so the eyebrow reads on the photo */
+  --surface-2: rgba(255, 255, 255, 0.1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Two scrims: a flat veil for overall legibility, and a stronger wash
+   on the reading side so the headline never lands on a bright patch. */
+.hero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(12, 9, 8, 0.92) 0%, rgba(12, 9, 8, 0.74) 42%, rgba(12, 9, 8, 0.42) 100%),
+    linear-gradient(0deg, rgba(12, 9, 8, 0.55), rgba(12, 9, 8, 0.55));
+}
+@media (max-width: 720px) {
+  .hero--photo::before {
+    background: linear-gradient(0deg, rgba(12, 9, 8, 0.86), rgba(12, 9, 8, 0.78));
+  }
+}
+
+.hero__in {
+  position: relative;   /* above the scrim */
+  z-index: 1;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 4.75rem) var(--pad) clamp(2.25rem, 5vw, 3.25rem);
+}
+.hero h1 { margin: var(--s3) 0; max-width: 15ch; }
+.hero h1 em { font-style: normal; color: var(--ember); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--line);
+  font-size: 0.94rem;
+  color: var(--text-mid);
+}
+.hero__meta > div { display: flex; flex-direction: column; gap: 1px; }
+.hero__meta dt {
+  font-family: var(--f-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hero__meta dd { margin: 0; font-family: var(--f-display); font-weight: 600; color: var(--text); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1, .hero .lede, .hero__ctas, .hero__meta {
+    animation: rise 0.7s var(--ease) both;
+  }
+  .hero .lede    { animation-delay: 0.05s; }
+  .hero__ctas    { animation-delay: 0.1s; }
+  .hero__meta    { animation-delay: 0.15s; }
+  @keyframes rise {
+    from { opacity: 0.001; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ─────────────── Countdown ─────────────── */
+.countdown { display: flex; gap: var(--s3); flex-wrap: wrap; }
+.countdown__unit { display: flex; flex-direction: column; gap: 2px; min-width: 3.4rem; }
+.countdown__n {
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ember);
+}
+.countdown__l {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.countdown--past .countdown__n { color: var(--text); }
+
+/* ─────────────── Section heads ─────────────── */
+.sec-head { display: flex; flex-direction: column; gap: var(--s2); max-width: var(--measure); margin-bottom: var(--s4); }
+
+/* ─────────────── Rules list (not cards) ─────────────── */
+.rules { display: flex; flex-direction: column; border-top: 1px solid var(--line-soft); }
+.rule {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  gap: var(--s1) var(--s4);
+  padding-block: var(--s3);
+  border-bottom: 1px solid var(--line-soft);
+  align-items: start;
+}
+.rule > h4 { padding-top: 0.12em; }
+@media (max-width: 640px) {
+  .rule { grid-template-columns: 1fr; gap: 0.35rem; }
+}
+
+/* ─────────────── The bus promise band ─────────────── */
+.promise {
+  background:
+    linear-gradient(100deg,
+      color-mix(in oklab, var(--ember) 16%, var(--surface)) 0%,
+      var(--surface) 62%);
+  border-block: 1px solid var(--line);
+}
+.promise__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: var(--s5);
+  align-items: center;
+}
+@media (max-width: 860px) { .promise__grid { grid-template-columns: 1fr; gap: var(--s4); } }
+.promise__big {
+  font-family: var(--f-display);
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.038em;
+  line-height: 0.98;
+}
+.promise__big em { font-style: normal; color: var(--ember); }
+
+/* A timetable, not a wall of cards — hairline rows so an odd count
+   (13 axes across 2 columns) never leaves a dead cell showing. */
+.axis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  column-gap: var(--s4);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-soft);
+}
+.axis-grid li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  gap: 0.4rem;
+  padding-block: 0.62rem;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--f-mono);
+  font-size: 0.735rem;
+  line-height: 1.4;
+  color: var(--text-mid);
+}
+.axis-grid li b { color: var(--ember); font-weight: 500; }
+
+/* ─────────────── Axis finder: the one real object ─────────────── */
+.finder {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  max-width: 40rem;
+}
+.finder__head {
+  padding: var(--s3);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+}
+.finder__body { padding: var(--s3); display: flex; flex-direction: column; gap: var(--s3); }
+.finder__field { display: flex; flex-direction: column; gap: 0.4rem; }
+.finder__field label {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.finder__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.85rem;
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: var(--f-body);
+  font-size: 1rem;
+}
+.finder__input::placeholder { color: var(--text-dim); }
+.finder__input:focus-visible { border-color: var(--amber); }
+
+.finder__results { display: flex; flex-direction: column; gap: var(--s2); max-height: 26rem; overflow-y: auto; }
+.finder__empty { color: var(--text-dim); font-size: 0.95rem; }
+
+.axis-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--s3);
+  background: var(--surface-2);
+  border-left: 3px solid var(--ember);
+}
+.axis-card__top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
+.axis-card__n {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.axis-card h4 { font-size: 1.02rem; }
+.axis-card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.3rem var(--s2);
+  font-size: 0.9rem;
+}
+.axis-card dt {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-top: 0.3em;
+}
+.axis-card dd { margin: 0; color: var(--text-mid); }
+.axis-card dd.tbc { color: var(--text-dim); font-style: italic; }
+
+/* ─────────────── Ministers ─────────────── */
+/* Seven names is an odd number — a card grid would leave a hole,
+   so this is a ruled list that splits into two columns when there's room. */
+.ministers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  column-gap: var(--s5);
+  border-top: 1px solid var(--line-soft);
+}
+.minister {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr auto;
+  align-items: baseline;
+  gap: var(--s2);
+  padding-block: var(--s3);
+  border-bottom: 1px solid var(--line-soft);
+}
+.minister__n {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+.minister h3 { font-size: 1.08rem; }
+
+/* ─────────────── Scripture plate: the one typographic moment ─────────────── */
+/* The logo's own gradient, at page scale: red tail → mid → flame tip. */
+.scripture {
+  background:
+    linear-gradient(152deg,
+      var(--ember-hover) 0%,
+      var(--ember-fill) 26%,
+      var(--ember-mid) 62%,
+      var(--amber) 128%);
+  color: var(--on-ember);
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+}
+.scripture blockquote {
+  margin: 0;
+  max-width: 24ch;
+  font-family: var(--f-body);
+  font-size: clamp(1.5rem, 4.4vw, 2.7rem);
+  line-height: 1.18;
+  letter-spacing: -0.014em;
+  font-style: italic;
+  text-wrap: balance;
+}
+.scripture cite {
+  display: block;
+  margin-top: var(--s3);
+  font-family: var(--f-mono);
+  font-style: normal;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ─────────────── Editions strip ─────────────── */
+.editions { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--s3); }
+.edition {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  border-top: 2px solid var(--line);
+  padding-top: var(--s3);
+}
+.edition--now { border-top-color: var(--ember); }
+.edition__yr {
+  font-family: var(--f-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.edition--now .edition__yr { color: var(--ember); }
+.edition__plate {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: var(--s3);
+  background: var(--surface-2);
+  border: 1px dashed var(--line);
+  text-align: center;
+}
+.edition__plate span {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.edition__photo { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r); }
+.edition dl { margin: 0; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.9rem; }
+.edition dt {
+  font-family: var(--f-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.edition dd { margin: 0; color: var(--text-mid); }
+
+/* ─────────────── Giving ─────────────── */
+.give-card {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--amber);
+  background: var(--surface);
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  max-width: 34rem;
+  box-shadow: var(--shadow);
+}
+.give-amounts { display: flex; flex-wrap: wrap; gap: var(--s1); }
+.give-amount {
+  flex: 1 1 7rem;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  padding: 0.6rem 0.85rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  color: var(--text);
+  text-align: left;
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+}
+.give-amount:hover, .give-amount[aria-pressed='true'] { border-color: var(--ember); }
+.give-amount[aria-pressed='true'] { background: color-mix(in oklab, var(--ember) 14%, var(--surface-2)); }
+.give-amount b { font-family: var(--f-display); font-size: 1.05rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.give-amount span { font-size: 0.78rem; color: var(--text-dim); }
+
+.notice {
+  border-left: 3px solid var(--amber);
+  background: color-mix(in oklab, var(--amber) 9%, transparent);
+  padding: var(--s3);
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.notice strong { color: var(--text); }
+
+/* ─────────────── Checklist ─────────────── */
+.checks { display: flex; flex-direction: column; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+.checks li {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+  line-height: 1.55;
+}
+.checks li::before {
+  content: '';
+  width: 13px; height: 13px;
+  margin-top: 0.42em;
+  border: 1.5px solid var(--ember);
+  border-radius: var(--r);
+}
+
+/* ─────────────── Footer ─────────────── */
+.foot { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--s5) var(--s4); }
+.foot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--s4);
+}
+.foot h4 {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.7rem;
+}
+.foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.foot a { color: var(--text-mid); text-decoration: none; font-size: 0.94rem; }
+.foot a:hover { color: var(--ember); }
+.foot__base {
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+/* ─────────────── Sticky mobile CTA ─────────────── */
+.sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 90;
+  display: none;
+  gap: var(--s1);
+  padding: 0.6rem var(--pad) calc(0.6rem + env(safe-area-inset-bottom));
+  background: color-mix(in oklab, var(--ground) 94%, transparent);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+}
+.sticky-cta .btn { flex: 1; }
+@media (max-width: 720px) {
+  .sticky-cta { display: flex; }
+  body { padding-bottom: 4.6rem; }
+}
+
+/* ─────────────── Programmes ───────────────
+   Deliberately not three feature cards. Each programme gets a real row
+   with room for a number, because the numbers are what make them
+   believable. */
+.progs { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.prog {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--s2) var(--s5);
+  padding-block: var(--s4);
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .prog { grid-template-columns: 1fr; gap: var(--s2); padding-block: var(--s3); }
+}
+.prog__head { display: flex; flex-direction: column; gap: 0.45rem; }
+.prog__name {
+  font-family: var(--f-display);
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.026em;
+  line-height: 1.08;
+}
+.prog__stat {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.prog__stat--tbc { color: var(--text-dim); }
+.prog__body { display: flex; flex-direction: column; gap: var(--s2); align-items: flex-start; }
+.prog__body p { color: var(--text-mid); }
+
+/* ─────────────── Flyer ─────────────── */
+.flyer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  max-width: 30rem;
+}
+.flyer img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+.flyer figcaption {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ─────────────── Logo lockup ───────────────
+   Two files, one per theme (the wordmark is charcoal on light,
+   cream on dark). Which one shows follows exactly the same
+   three-state pattern as the colour tokens. */
+.logo { width: 100%; max-width: 260px; height: auto; }
+.logo--light { display: none; }
+.logo--dark  { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .logo--light { display: block; }
+  :root:not([data-theme='dark']) .logo--dark  { display: none; }
+}
+:root[data-theme='light'] .logo--light { display: block; }
+:root[data-theme='light'] .logo--dark  { display: none; }
+
+.logo-block { display: flex; flex-direction: column; gap: var(--s2); }
+
+/* ─────────────── Misc ─────────────── */
+.tscroll { overflow-x: auto; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--s4); }
+.hr { height: 1px; background: var(--line); border: 0; margin: 0; }

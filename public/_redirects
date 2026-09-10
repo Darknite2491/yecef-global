@@ -1,0 +1,3 @@
+# SPA fallback: every path serves index.html so /about, /give etc.
+# work on a direct link or a refresh, not just via in-app navigation.
+/*    /index.html   200

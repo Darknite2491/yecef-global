@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════
+   YECEF GLOBAL — DESIGN TOKENS
+   Change a value here and it changes everywhere. Never write a
+   raw hex or a magic pixel value anywhere else in the project.
+
+   The palette is sampled directly from the YECEF logo. The mark's
+   gradient runs #F6372B (red tail) → #FD6421 → #FFA805 (flame tip);
+   the wordmark is #3E4550. Those are the brand, so they are the
+   accents here — nothing was invented.
+
+   A flame's hottest point is blue, so the blue core carries
+   structure (links, data, secondary actions) while ember and amber
+   carry the emotion. Neutrals are warm-biased, never neutral grey,
+   so the logo's flame sits on them without clashing.
+
+   --ember is the accent and text colour; --ember-fill is a touch
+   deeper so white button text clears 4.5:1. Both read as the same
+   brand red.
+
+   Dark-first: :root holds the dark set, light is redefined for
+   viewers whose OS or explicit choice asks for it.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Ground and surfaces ── */
+  --ground:      #0F0C0B;  /* Upper Room — warm near-black, not blue-black */
+  --surface:     #1A1513;
+  --surface-2:   #241D1A;
+  --line:        #362B26;
+  --line-soft:   #271F1C;
+
+  /* ── Text ── */
+  --text:        #F6EFE8;
+  --text-mid:    #C4B3A8;
+  --text-dim:    #8E7C72;  /* Ash */
+  --on-ember:    #FFF7F2;  /* text that sits on an ember fill */
+
+  /* ── Accents: straight off the logo ── */
+  --ember:       #F6372B;  /* logo red — accent, headings, borders. 5.1:1 on ground */
+  --ember-mid:   #FD6421;  /* logo mid-gradient */
+  --amber:       #FFA805;  /* logo flame tip. 10:1 on ground */
+  --ember-fill:  #D93A20;  /* button fill — 4.6:1 with white text */
+  --ember-hover: #B82C0C;
+  --core:        #6D86E0;  /* flame core — links, data, quiet buttons */
+  --ok:          #4FA97C;
+  --charcoal:    #3E4550;  /* the wordmark grey */
+
+  /* ── Type ── */
+  --f-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --f-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --f-mono:    'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ── Space scale ── */
+  --s1: 0.5rem;
+  --s2: 0.875rem;
+  --s3: 1.25rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4.5rem;
+  --s7: 7rem;
+
+  /* ── Layout ── */
+  --measure: 66ch;              /* comfortable reading width */
+  --shell: 1140px;              /* page max width */
+  --pad: clamp(1.15rem, 4vw, 2.5rem);
+  --nav-h: 68px;
+
+  /* ── Radius: 2px on containers, 999px on pills. Nothing between. ── */
+  --r: 2px;
+  --r-pill: 999px;
+
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 18px 40px -24px rgba(0, 0, 0, 0.9);
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+/* System-light viewers (no explicit choice stamped on <html>) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --ground:     #F7F2EC;  /* Paper — warm, so hall photos sit right on it */
+    --surface:    #FFFFFF;
+    --surface-2:  #F0E8DF;
+    --line:       #DACEC2;
+    --line-soft:  #E8DFD5;
+    --text:       #17100D;
+    --text-mid:   #574A43;
+    --text-dim:   #857468;
+    --ember:      #B82C0C;  /* 5.5:1 on paper */
+    --ember-mid:  #C2500F;
+    --amber:      #B87516;
+    --ember-fill: #B82C0C;  /* 6.2:1 with white text */
+    --ember-hover:#8F2109;
+    --core:       #3E55B8;
+    --ok:         #2F7A54;
+    --charcoal:   #3E4550;
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.7), 0 16px 34px -26px rgba(60, 30, 15, 0.5);
+    color-scheme: light;
+  }
+}
+
+/* Explicit light choice wins even on a dark OS */
+:root[data-theme='light'] {
+  --ground:     #F7F2EC;
+  --surface:    #FFFFFF;
+  --surface-2:  #F0E8DF;
+  --line:       #DACEC2;
+  --line-soft:  #E8DFD5;
+  --text:       #17100D;
+  --text-mid:   #574A43;
+  --text-dim:   #857468;
+  --ember:      #B82C0C;
+  --ember-mid:  #C2500F;
+  --amber:      #B87516;
+  --ember-fill: #B82C0C;
+  --ember-hover:#8F2109;
+  --core:       #3E55B8;
+  --ok:         #2F7A54;
+  --charcoal:   #3E4550;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.7), 0 16px 34px -26px rgba(60, 30, 15, 0.5);
+  color-scheme: light;
+}
