@@ -93,9 +93,18 @@ export default function AxisFinder() {
            target="_blank" rel="noopener noreferrer">
           Reserve a seat on the bus
         </a>
+
+        {/* Two steps, in the order they actually happen: register, then
+            join the group where the pickup time gets announced. */}
+        {event.busWhatsapp && (
+          <a className="btn btn--ghost" href={event.busWhatsapp}
+             target="_blank" rel="noopener noreferrer">
+            Join the free bus WhatsApp group
+          </a>
+        )}
         <p className="dim" style={{ fontSize: '0.84rem' }}>
-          Registration is on Luma. Tell us your pickup point when you register so
-          your coordinator knows to count you.
+          Registration is on Luma. Tell us your pickup point when you register, then
+          join the group — that’s where your coordinator posts the exact spot and time.
         </p>
       </div>
     </section>

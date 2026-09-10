@@ -660,6 +660,26 @@
 .prog__body { display: flex; flex-direction: column; gap: var(--s2); align-items: flex-start; }
 .prog__body p { color: var(--text-mid); }
 
+/* ─────────────── Edition gallery ─────────────── */
+/* Fixed 4 across so the row always fills — auto-fit left one photo
+   stranded on its own line at some widths. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+@media (max-width: 520px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r);
+  filter: saturate(0.94);
+  transition: filter 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.gallery img:hover { filter: saturate(1.05); transform: scale(1.012); }
+
 /* ─────────────── Flyer ─────────────── */
 .flyer {
   display: flex;

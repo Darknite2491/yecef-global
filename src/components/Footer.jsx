@@ -39,6 +39,13 @@ export default function Footer() {
                   Reserve a seat
                 </a>
               </li>
+              {event.busWhatsapp && (
+                <li>
+                  <a href={event.busWhatsapp} target="_blank" rel="noopener noreferrer">
+                    Free bus WhatsApp group
+                  </a>
+                </li>
+              )}
               <li>
                 <a href={event.coordinatorUrl} target="_blank" rel="noopener noreferrer">
                   Coordinator headcount

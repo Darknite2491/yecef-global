@@ -71,15 +71,21 @@ export const event = {
 
   registeredCount: 329, // update from the Luma dashboard
 
+  // ── The free-bus WhatsApp community ────────────────────────────
+  // Where riders get their pickup point and departure time from their
+  // coordinator. Surfaced next to the bus finder and on the event page.
+  busWhatsapp: 'https://chat.whatsapp.com/C37UmqgzGDx5T0okCjDPjZ',
+
   // ── Artwork ────────────────────────────────────────────────────
-  // heroImage: landscape. Sits behind the homepage hero, under a scrim
-  //   that keeps the headline readable. The landscape flyer works well.
-  //   Leave null and the hero uses the ember gradient instead.
-  // flyer: the portrait flyer, shown as an image on /fresh-fire.
-  heroImage: null,  // e.g. '/images/fresh-fire-hero.jpg'  (1920×1080 or wider)
-  flyer: null,      // e.g. '/images/fresh-fire-flyer.jpg'
+  // heroImage: a wide crop of a real 2025 hall shot rather than the flyer.
+  //   A flyer behind a headline fights it — two sets of type competing —
+  //   whereas faces under a scrim make the headline land. The flyer gets
+  //   its own proper slot on /fresh-fire below.
+  heroImage: '/images/hero-2025.jpg',
+  heroImageAlt: 'Young people worshipping with hands raised at YECEF 2025',
+  flyer: '/images/fresh-fire-2026-flyer.jpg',
   flyerAlt:
-    'Fresh Fire 2026 flyer — Saturday 12 September, Trinity House Oniru, free entry and free buses from 13 pickup points',
+    'Fresh Fire 2026 flyer — Saturday 12 September, 9am, Trinity House, Zion Centre, Oniru, Victoria Island, Lagos. Ministering: Afolabi Oke, Racheal Oseni, Alabba, Reverend David S. Johnson, Pst. Mike Albert, Ayodeji Moboluwaji, Pst. Bright Micah. Convener: Morenike Alayerogun.',
 }
 
 // True once Fresh Fire has finished. The homepage uses this to lead with
@@ -262,7 +268,7 @@ export const editions = [
     venue: 'Trinity House, Zion Centre, Oniru',
     scripture: 'Acts 2:1–4 · Joel 2:28',
     ministers: ministers.map((m) => m.name),
-    photo: null, // e.g. '/images/2026-hall.jpg'
+    photo: null, // add a 2026 photo here after Saturday
     note: 'Free buses from 13 pickup points across Lagos and Ogun.',
     upcoming: true,
   },
@@ -272,7 +278,13 @@ export const editions = [
     date: 'Saturday 6 September 2025',
     venue: 'Darlington Hall',
     ministers: ['Rev. David S. Johnson', 'Pst. Mike Albert'],
-    photo: null, // TODO: add your 2025 photos
+    photo: '/images/2025-main.jpg',
+    photos: [
+      { src: '/images/2025-a.jpg', alt: 'Prayer and ministry on the floor at YECEF 2025' },
+      { src: '/images/2025-b.jpg', alt: 'Two attendees at the YECEF 2025 backdrop' },
+      { src: '/images/2025-c.jpg', alt: 'Attendees embracing in a full hall at YECEF 2025' },
+      { src: '/images/2025-d.jpg', alt: 'Young men worshipping at YECEF 2025' },
+    ],
     note: null, // TODO: headcount, if you have it
   },
   {

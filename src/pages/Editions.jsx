@@ -59,12 +59,21 @@ export default function Editions() {
               </div>
 
               {ed.photo ? (
-                <img
-                  className="edition__photo"
-                  src={ed.photo}
-                  alt={`${ed.theme || 'YECEF'} ${ed.year}`}
-                  loading="lazy"
-                />
+                <div className="stack-sm">
+                  <img
+                    className="edition__photo"
+                    src={ed.photo}
+                    alt={`${ed.theme || 'YECEF'} ${ed.year}`}
+                    loading="lazy"
+                  />
+                  {ed.photos?.length > 0 && (
+                    <div className="gallery">
+                      {ed.photos.map((p) => (
+                        <img key={p.src} src={p.src} alt={p.alt} loading="lazy" />
+                      ))}
+                    </div>
+                  )}
+                </div>
               ) : (
                 <div className="edition__plate">
                   <span>

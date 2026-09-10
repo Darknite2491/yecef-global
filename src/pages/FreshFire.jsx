@@ -64,8 +64,12 @@ export default function FreshFire() {
             <div className="rule">
               <h4>Getting there</h4>
               <p className="mid">
-                Free coaches from {axes.length} pickup axes. Find yours below and reserve so
-                your coordinator can count you.
+                Free coaches from {axes.length} pickup axes. Find yours below, reserve so
+                your coordinator can count you, then{' '}
+                <a href={event.busWhatsapp} target="_blank" rel="noopener noreferrer">
+                  join the free bus WhatsApp group
+                </a>{' '}
+                — that’s where pickup points and departure times get posted.
               </p>
             </div>
             <div className="rule">
