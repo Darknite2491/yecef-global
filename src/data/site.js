@@ -69,7 +69,7 @@ export const event = {
   // The retired attendee form. Kept here only so the link isn't lost.
   legacyAttendeeFormUrl: 'https://forms.gle/P5H6K5Qinzy9ij5GA',
 
-  registeredCount: 329, // update from the Luma dashboard
+  registeredCount: 413, // update from the Luma dashboard
 
   // ── The free-bus WhatsApp community ────────────────────────────
   // Where riders get their pickup point and departure time from their

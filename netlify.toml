@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+# Netlify defaults new projects to Node 24, and `npm ci` fails there during
+# dependency installation for this dependency set. Vite 5 targets Node 18/20/22,
+# and 22 is what the committed lockfile was generated with — pinning it makes
+# the CI build match a known-good local install.
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
 # Only needed if you switch main.jsx from HashRouter to BrowserRouter.
 [[redirects]]
   from = "/*"
