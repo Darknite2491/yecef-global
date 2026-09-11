@@ -88,6 +88,53 @@ export const event = {
     'Fresh Fire 2026 flyer — Saturday 12 September, 9am, Trinity House, Zion Centre, Oniru, Victoria Island, Lagos. Ministering: Afolabi Oke, Racheal Oseni, Alabba, Reverend David S. Johnson, Pst. Mike Albert, Ayodeji Moboluwaji, Pst. Bright Micah. Convener: Morenike Alayerogun.',
 }
 
+// ── Mentoring: the mentors themselves ─────────────────────────
+// Everything on /mentorship reads from here. Add a mentor and they
+// appear; no page edit needed.
+//
+// Only list someone who has AGREED to be listed, with details they
+// are happy to publish — these are public contact routes.
+export const mentors = [
+  {
+    id: 'renny',
+    name: 'Morenike Alayerogun',
+    knownAs: 'Coach Renny',
+    role: 'Convener, YECEF · Certified life coach',
+    photo: '/images/coach-renny.jpg',
+    // Her own published coaching focus areas
+    areas: ['Business', 'Career', 'Relationships', 'Personal development'],
+    bio:
+      'Convener of Youth Explosion for Christ and a working life coach. She has spent three Septembers filling halls with young people; the mentoring track is what happens in the months between.',
+    phone: '08029488302',
+    email: 'kenkebaanky@yahoo.com',
+    instagram: 'https://instagram.com/kenkebaanky',
+    tiktok: 'https://tiktok.com/@kenkebaanky',
+  },
+  // TODO: the rest of the mentor bench. For each one you need a name,
+  // what they actually do, the areas they'll take questions on, a
+  // photo, and ONE contact route they're happy to publish.
+]
+
+// How the mentoring programme runs. Fill the TODOs as they're decided.
+export const mentoring = {
+  cadence: 'Every quarter',
+  // TODO: the first session's date and venue, once fixed.
+  nextDate: null,        // e.g. 'Saturday 6 December 2026'
+  nextVenue: null,
+  // TODO: a Google Form or Luma link for people to request a mentor.
+  // Until it's set the page routes requests to Instagram DM.
+  signupUrl: null,
+  // What a young person can actually bring to a session.
+  topics: [
+    'Choosing a course, or changing one',
+    'First job, and how to get seen',
+    'Starting something of your own',
+    'Money — earning it, keeping it, not being ashamed of it',
+    'Faith when it stops feeling simple',
+    'Relationships, and knowing what you want',
+  ],
+}
+
 // ── The on-site registration desk at /desk ────────────────────
 // Volunteers open this on their own phones and register people who
 // arrive without having signed up, or who can't do it themselves.
@@ -271,9 +318,8 @@ export const programmes = [
     stat: 'Every quarter, from 2026',
     body:
       'Four times a year, young people sit with people a few steps ahead of them — on work, faith, money and the decisions that are hard to make alone. Small rooms, real questions, no stage.',
-    link: null,
-    // TODO: first date, venue and how to sign up. Add a link here once
-    // there's a page or form for it and the button appears automatically.
+    link: '/mentorship',
+    linkLabel: 'Meet the mentors',
   },
   {
     id: 'skills',
@@ -328,12 +374,24 @@ export const editions = [
   },
   {
     year: 2024,
-    theme: null, // TODO: the 2024 theme
+    theme: 'Raising the End Time Army',
     date: 'Saturday 14 September 2024',
-    venue: null, // TODO
-    ministers: ['Min. Peterson Okopi'],
-    photo: null, // TODO: add your 2024 photos
-    note: 'The first edition.',
+    venue: 'Balmoral Convention Centre, Sheraton, Ikeja',
+    ministers: [
+      'Min. Banke Adeyemi Oba',
+      'Min. Peterson Okopi',
+      'Rev. David S. Johnson',
+      'Pastor Tosin Alad',
+      'Pastor Mike Albert',
+    ],
+    photo: '/images/2024-main.jpg',
+    photos: [
+      { src: '/images/2024-a.jpg', alt: 'Ministers and guests at YECEF 2024' },
+      { src: '/images/2024-b.jpg', alt: 'Speaker at the podium, YECEF 2024' },
+      { src: '/images/2024-c.jpg', alt: 'Attendees at YECEF 2024' },
+      { src: '/images/2024-d.jpg', alt: 'The Youth Explosion for Christ stage, 2024' },
+    ],
+    note: 'The first edition — an interdenominational youth gathering for a Pentecostal encounter.',
   },
 ]
 

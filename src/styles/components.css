@@ -727,6 +727,93 @@
 
 .logo-block { display: flex; flex-direction: column; gap: var(--s2); }
 
+/* ─────────────── Mentors ───────────────
+   A face, what they help with, and one way to reach them. */
+/* auto-fill with a max track, so one mentor stays a card instead of
+   stretching the full width and distorting the portrait. */
+.mentors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 22rem));
+  gap: var(--s3);
+}
+.mentor {
+  display: flex;
+  flex-direction: column;
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--ember);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.mentor__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  max-height: 15rem;
+  object-position: center 22%;
+}
+.mentor__photo--none { background: var(--surface-2); }
+.mentor__body {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  padding: var(--s3);
+  flex: 1;
+}
+.mentor__body h3 { font-size: 1.25rem; }
+.mentor__real {
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.mentor__role {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--ember);
+}
+.mentor__areas {
+  list-style: none;
+  margin: .3rem 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+.mentor__areas li {
+  font-family: var(--f-mono);
+  font-size: .64rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .22rem .55rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--text-mid);
+}
+
+/* ─────────────── Topic list ─────────────── */
+.topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  column-gap: var(--s5);
+  border-top: 1px solid var(--line-soft);
+}
+.topics li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: var(--s2);
+  align-items: baseline;
+  padding-block: var(--s2);
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 1.02rem;
+}
+.topics .mono { font-size: .72rem; color: var(--ember); }
+
 /* ─────────────── Registration desk (/desk) ───────────────
    Tuned for a volunteer holding a phone with a queue in front of
    them: 16px+ inputs so iOS doesn't zoom on focus, 48px targets,

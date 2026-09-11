@@ -5,6 +5,7 @@ import { org, event } from '../data/site.js'
 const LINKS = [
   { to: '/fresh-fire', label: 'Fresh Fire 2026' },
   { to: '/about', label: 'About' },
+  { to: '/mentorship', label: 'Mentoring' },
   { to: '/editions', label: 'Editions' },
   { to: '/serve', label: 'Serve' },
 ]
