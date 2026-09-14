@@ -1,3 +1,17 @@
+# Short link for bulk SMS / print / flyers: /join -> WhatsApp community.
+# Carrier and bulk-SMS spam filters score raw chat.whatsapp.com links hard, so
+# messages point at our own domain and land here instead.
+#
+# MUST stay above the /* catch-all below: Netlify reads this file top to bottom
+# and stops at the first match. It must also live in THIS file, not
+# netlify.toml -- _redirects is processed in full before netlify.toml is, so a
+# rule there would never be reached. The trailing ! forces the redirect.
+#
+# To change which group /join opens, edit both URLs below. Nothing else
+# in the codebase references them.
+/join     https://chat.whatsapp.com/KjRTIFVRF4443pD4p1Q2cI   302!
+/join/    https://chat.whatsapp.com/KjRTIFVRF4443pD4p1Q2cI   302!
+
 # SPA fallback: every path serves index.html so /about, /give etc.
 # work on a direct link or a refresh, not just via in-app navigation.
 /*    /index.html   200

@@ -10,24 +10,6 @@
   NODE_VERSION = "22"
   NPM_FLAGS = "--no-audit --no-fund"
 
-# Short link for bulk SMS / print / flyers: /join -> WhatsApp group invite.
-# Carrier and bulk-SMS spam filters score raw chat.whatsapp.com links hard, so
-# messages point at our own domain and land here instead. force = true so this
-# wins over the SPA catch-all below.
-# To change which group /join opens, edit the `to =` value -- nothing else
-# in the codebase references it.
-[[redirects]]
-  from = "/join"
-  to = "https://chat.whatsapp.com/KjRTIFVRF4443pD4p1Q2cI"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/join/"
-  to = "https://chat.whatsapp.com/KjRTIFVRF4443pD4p1Q2cI"
-  status = 302
-  force = true
-
 # Only needed if you switch main.jsx from HashRouter to BrowserRouter.
 [[redirects]]
   from = "/*"
